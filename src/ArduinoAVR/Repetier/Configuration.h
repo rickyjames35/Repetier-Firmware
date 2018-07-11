@@ -288,7 +288,7 @@ controlled by settings in extruder 0 definition. */
 #define EXT0_INVERSE true
 #define EXT0_ENABLE_PIN E0_ENABLE_PIN
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
-#define EXT0_ENABLE_ON 0
+#define EXT0_ENABLE_ON 1
 /* Set to 1 to mirror motor. Pins for mirrored motor are below */
 #define EXT0_MIRROR_STEPPER 0
 #define EXT0_STEP2_PIN E0_STEP_PIN
@@ -844,28 +844,28 @@ PRINTER_MODE_CNC 2
 use a mechanical endstop connected with GND. Set value to false for no pull-up
 on this endstop.
 */
-#define ENDSTOP_PULLUP_X_MIN false
-#define ENDSTOP_PULLUP_Y_MIN false
-#define ENDSTOP_PULLUP_Z_MIN false
+#define ENDSTOP_PULLUP_X_MIN true
+#define ENDSTOP_PULLUP_Y_MIN true
+#define ENDSTOP_PULLUP_Z_MIN true
 #define ENDSTOP_PULLUP_X_MAX true
 #define ENDSTOP_PULLUP_Y_MAX true
-#define ENDSTOP_PULLUP_Z_MAX false
+#define ENDSTOP_PULLUP_Z_MAX true
 
 //set to true to invert the logic of the endstops
 #define ENDSTOP_X_MIN_INVERTING true
 #define ENDSTOP_Y_MIN_INVERTING true
 #define ENDSTOP_Z_MIN_INVERTING true
-#define ENDSTOP_X_MAX_INVERTING false
-#define ENDSTOP_Y_MAX_INVERTING false
+#define ENDSTOP_X_MAX_INVERTING true
+#define ENDSTOP_Y_MAX_INVERTING true
 #define ENDSTOP_Z_MAX_INVERTING true
 
 // Set the values true where you have a hardware endstop. The Pin number is taken from pins.h.
 
 #define MIN_HARDWARE_ENDSTOP_X true
 #define MIN_HARDWARE_ENDSTOP_Y true
-#define MIN_HARDWARE_ENDSTOP_Z false
-#define MAX_HARDWARE_ENDSTOP_X false
-#define MAX_HARDWARE_ENDSTOP_Y false
+#define MIN_HARDWARE_ENDSTOP_Z true
+#define MAX_HARDWARE_ENDSTOP_X true
+#define MAX_HARDWARE_ENDSTOP_Y true
 #define MAX_HARDWARE_ENDSTOP_Z true
 
 // If you have a mirrored motor you can put a second endstop to that motor.
@@ -902,9 +902,9 @@ on this endstop.
 //// ADVANCED SETTINGS - to tweak parameters
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
-#define X_ENABLE_ON 0
-#define Y_ENABLE_ON 0
-#define Z_ENABLE_ON 0
+#define X_ENABLE_ON 1
+#define Y_ENABLE_ON 1
+#define Z_ENABLE_ON 1
 
 // Disables axis when it's not being used.
 #define DISABLE_X false
@@ -921,7 +921,7 @@ on this endstop.
 // is also the axis you invert!
 #define INVERT_X_DIR 1
 #define INVERT_X2_DIR 1
-#define INVERT_Y_DIR 1
+#define INVERT_Y_DIR 0
 #define INVERT_Y2_DIR 1
 #define INVERT_Z_DIR 1
 #define INVERT_Z2_DIR 1
@@ -945,24 +945,24 @@ on this endstop.
 //If true, axis won't move to coordinates greater than the defined lengths below.
 #define max_software_endstop_x true
 #define max_software_endstop_y true
-#define max_software_endstop_z false
+#define max_software_endstop_z true
 
 // If during homing the endstop is reached, ho many mm should the printer move back for the second try
-#define ENDSTOP_X_BACK_MOVE 5
-#define ENDSTOP_Y_BACK_MOVE 5
+#define ENDSTOP_X_BACK_MOVE 2
+#define ENDSTOP_Y_BACK_MOVE 2
 #define ENDSTOP_Z_BACK_MOVE 2
 
 // For higher precision you can reduce the speed for the second test on the endstop
 // during homing operation. The homing speed is divided by the value. 1 = same speed, 2 = half speed
-#define ENDSTOP_X_RETEST_REDUCTION_FACTOR 2
-#define ENDSTOP_Y_RETEST_REDUCTION_FACTOR 2
+#define ENDSTOP_X_RETEST_REDUCTION_FACTOR 4
+#define ENDSTOP_Y_RETEST_REDUCTION_FACTOR 4
 #define ENDSTOP_Z_RETEST_REDUCTION_FACTOR 2
 
 // When you have several endstops in one circuit you need to disable it after homing by moving a
 // small amount back. This is also the case with H-belt systems.
 #define ENDSTOP_X_BACK_ON_HOME 1
 #define ENDSTOP_Y_BACK_ON_HOME 1
-#define ENDSTOP_Z_BACK_ON_HOME 0
+#define ENDSTOP_Z_BACK_ON_HOME 1
 // If you do z min homing, you might want to rise extruder a bit after homing so it does not heat
 // touching your bed.
 #define Z_UP_AFTER_HOME 0
@@ -975,9 +975,9 @@ on this endstop.
 // For delta robot Z_MAX_LENGTH is the maximum travel of the towers and should be set to the distance between the hotend
 // and the platform when the printer is at its home position.
 // If EEPROM is enabled these values will be overridden with the values in the EEPROM
-#define X_MAX_LENGTH 165
-#define Y_MAX_LENGTH 175
-#define Z_MAX_LENGTH 116.820
+#define X_MAX_LENGTH 840
+#define Y_MAX_LENGTH 1025
+#define Z_MAX_LENGTH 168
 // Coordinates for the minimum axis. Can also be negative if you want to have the bed start at 0 and the printer can go to the left side
 // of the bed. Maximum coordinate is given by adding the above X_MAX_LENGTH values.
 #define X_MIN_POS 0
@@ -1174,7 +1174,7 @@ Mega. Used only for nonlinear systems like delta or tuga. */
 // needs to heat all extruders (1) or only current extruder (0)
 #define ZHOME_HEAT_ALL 1 
 // Z-height for heating extruder during homing
-#define ZHOME_HEAT_HEIGHT 20
+#define ZHOME_HEAT_HEIGHT 4
 // If your bed might bend while probing, because your sensor is the extruder tip
 // you can define a predefined x,y position so bending is always the same and
 // can be compensated. Set coordinate to 999999 to ignore positions and just
@@ -1526,7 +1526,7 @@ Servos are controlled by a pulse width normally between 500 and 2500 with 1500ms
 WARNING: Servos can draw a considerable amount of current. Make sure your system can handle this or you may risk your hardware!
 */
 
-#define FEATURE_SERVO 0
+#define FEATURE_SERVO 1
 // Servo pins on a RAMPS board are 11,6,5,4
 #define SERVO0_PIN 11
 #define SERVO1_PIN 6
@@ -1589,9 +1589,9 @@ to recalibrate z.
 #define Z_PROBE_SPEED 2
 /** Delay before going down. Needed for piezo endstops to reload safely. */
 #define Z_PROBE_DELAY 0
-#define Z_PROBE_XY_SPEED 150
+#define Z_PROBE_XY_SPEED 100
 #define Z_PROBE_SWITCHING_DISTANCE 1.5 // Distance to safely switch off probe after it was activated
-#define Z_PROBE_REPETITIONS 5 // Repetitions for probing at one point.
+#define Z_PROBE_REPETITIONS 3 // Repetitions for probing at one point.
 /** Distance between nozzle and bed when probe triggers. */
 #define Z_PROBE_HEIGHT 39.91
 /** These scripts are run before resp. after the z-probe is done. Add here code to activate/deactivate probe if needed. */
@@ -1624,14 +1624,14 @@ bending to both sides of the axis. So probe points 2 and 3 build the symmetric a
 point 1 is mirrored to 1m across the axis. Using the symmetry we then remove the bending
 from 1 and use that as plane.
 */
-#define BED_LEVELING_METHOD 0
+#define BED_LEVELING_METHOD 1
 /* How to correct rotation.
 0 = software side
 1 = motorized modification of 2 from 3 fixture points.
 */
 #define BED_CORRECTION_METHOD 0
 // Grid size for grid based plane measurement
-#define BED_LEVELING_GRID_SIZE 4
+#define BED_LEVELING_GRID_SIZE 5
 // Repetitions for motorized bed leveling
 #define BED_LEVELING_REPETITIONS 5
 /* These are the motor positions relative to bed origin. Only needed for
@@ -1647,7 +1647,7 @@ motorized bed leveling */
    This feature requires a working z-probe and you should have z-endstop at the top not at the bottom.
    The same 3 points are used for the G29 command.
 */
-#define FEATURE_AUTOLEVEL 0
+#define FEATURE_AUTOLEVEL 1
 #define Z_PROBE_X1 100
 #define Z_PROBE_Y1 20
 #define Z_PROBE_X2 160
@@ -1674,17 +1674,17 @@ motorized bed leveling */
  * DISTORTION_CORRECTION_R is the distance of last row or column from center
  */
 
-#define DISTORTION_CORRECTION         1
-#define DISTORTION_CORRECTION_POINTS  5
+#define DISTORTION_CORRECTION         0
+#define DISTORTION_CORRECTION_POINTS  10
 /** Max. distortion value to enter. Used to prevent dangerous errors with big values. */
 #define DISTORTION_LIMIT_TO 2
 /* For delta printers you simply define the measured radius around origin */
 #define DISTORTION_CORRECTION_R       80
 /* For all others you define the correction rectangle by setting the min/max coordinates. Make sure the the probe can reach all points! */
-#define DISTORTION_XMIN 10
-#define DISTORTION_YMIN 10
-#define DISTORTION_XMAX 190
-#define DISTORTION_YMAX 190
+#define DISTORTION_XMIN 270
+#define DISTORTION_YMIN 230
+#define DISTORTION_XMAX 570
+#define DISTORTION_YMAX 530
 
 /** Uses EEPROM instead of ram. Allows bigger matrix (up to 22x22) without any ram cost.
   Especially on arm based systems with cached EEPROM it is good, on AVR it has a small
@@ -1700,12 +1700,12 @@ point. So updating correction every 15 calls gives us at least 2 updates between
 measured points.
 NOTE: Explicit z changes will always trigger an update!
 */
-#define DISTORTION_UPDATE_FREQUENCY   15
+#define DISTORTION_UPDATE_FREQUENCY   10
 /** z distortion degrades to 0 from this height on. You should start after the first layer to get
 best bonding with surface. */
-#define DISTORTION_START_DEGRADE 0.5
+#define DISTORTION_START_DEGRADE 1.0
 /** z distortion correction gets down to 0 at this height. */
-#define DISTORTION_END_HEIGHT 1.5
+#define DISTORTION_END_HEIGHT 8.0
 /** If your corners measurement points are not measurable with given radius, you can
 set this to 1. It then omits the outer measurement points allowing a larger correction area.*/
 #define DISTORTION_EXTRAPOLATE_CORNERS 0
@@ -1879,7 +1879,7 @@ computations, so do not enable it if your display works stable!
 //#define TRY_AUTOREPAIR_LCD_ERRORS
 
 // This is line 2 of the status display at startup. Change to your like.
-#define UI_PRINTER_NAME "MyPrinter"
+#define UI_PRINTER_NAME "RickyPrinter"
 #define UI_PRINTER_COMPANY "Self Made"
 
 
