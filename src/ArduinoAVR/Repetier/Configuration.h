@@ -386,7 +386,7 @@ The codes are only executed for multiple extruder when changing the extruder. */
 #define EXT1_Y_OFFSET 0
 #define EXT1_Z_OFFSET 0
 // for skeinforge 40 and later, steps to pull the plastic 1 mm inside the extruder, not out.  Overridden if EEPROM activated.
-#define EXT1_STEPS_PER_MM 373
+#define EXT1_STEPS_PER_MM 413
 // What type of sensor is used?
 // 0 is no thermistor/temperature control
 // 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other)
@@ -415,10 +415,10 @@ The codes are only executed for multiple extruder when changing the extruder. */
 #define EXT1_STEP_PIN E1_STEP_PIN
 #define EXT1_DIR_PIN E1_DIR_PIN
 // set to 0/1 for normal / inverse direction
-#define EXT1_INVERSE false
+#define EXT1_INVERSE true
 #define EXT1_ENABLE_PIN E1_ENABLE_PIN
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
-#define EXT1_ENABLE_ON false
+#define EXT1_ENABLE_ON true
 /* Set to 1 to mirror motor. Pins for mirrored motor are below */
 #define EXT1_MIRROR_STEPPER 0
 #define EXT1_STEP2_PIN E0_STEP_PIN
@@ -429,13 +429,13 @@ The codes are only executed for multiple extruder when changing the extruder. */
 // length of filament pulled inside the heater. For repsnap or older
 // skeinforge use heigher values.
 //  Overridden if EEPROM activated.
-#define EXT1_MAX_FEEDRATE 25
+#define EXT1_MAX_FEEDRATE 30
 // Feedrate from halted extruder in mm/s
 //  Overridden if EEPROM activated.
-#define EXT1_MAX_START_FEEDRATE 12
+#define EXT1_MAX_START_FEEDRATE 10
 // Acceleration in mm/s^2
 //  Overridden if EEPROM activated.
-#define EXT1_MAX_ACCELERATION 10000
+#define EXT1_MAX_ACCELERATION 4000
 /** Type of heat manager for this extruder.
 - 0 = Simply switch on/off if temperature is reached. Works always.
 - 1 = PID Temperature control. Is better but needs good PID values. Defaults are a good start for most extruder.
@@ -455,7 +455,7 @@ Values for starts:
 The precise values may differ for different nozzle/resistor combination.
  Overridden if EEPROM activated.
 */
-#define EXT1_PID_INTEGRAL_DRIVE_MAX 130
+#define EXT1_PID_INTEGRAL_DRIVE_MAX 140
 /** \brief lower value for integral part
 
 The I state should converge to the exact heater output needed for the target temperature.
@@ -1986,4 +1986,3 @@ If you have leveling with bed coating or fixed z min you can use this menu to ad
 //#define CUSTOM_EVENTS
 
 #endif
-
